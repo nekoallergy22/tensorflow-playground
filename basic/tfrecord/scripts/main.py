@@ -12,6 +12,20 @@ from logger import setup_logger
 
 logger = setup_logger(LOG_DIR)
 
+
+class ArgumentParser:
+    def __init__(self):
+        self.parser = argparse.ArgumentParser(description='MNISTデータをTFRecordとして保存/読み込みするスクリプト')
+        self._add_arguments()
+
+    def _add_arguments(self) -> None:
+        self.parser.add_argument('--data_dir', type=Path, default=DATA_DIR, help='データディレクトリのパス')
+        self.parser.add_argument('--operation', type=str, choices=['save', 'load'], required=True, help='実行する操作（saveまたはload）')
+
+    def parse(self):
+        return self.parser.parse_args()
+    
+
 class MnistDataHandler:
     def __init__(self, data_dir: Path):
         self.data_dir = data_dir
@@ -71,39 +85,20 @@ class MnistDataHandler:
         return label_count
 
 def main() -> None:
-    try:
-        logger.info("プログラムを開始します")
-        
-        parser = argparse.ArgumentParser(
-            description='MNISTデータをTFRecordとして保存/読み込みするスクリプト'
-        )
-        parser.add_argument(
-            '--data_dir', 
-            type=Path, 
-            default=DATA_DIR, 
-            help='データディレクトリのパス'
-        )
-        parser.add_argument(
-            '--operation', 
-            type=str, 
-            choices=['save', 'load'], 
-            required=True, 
-            help='実行する操作（saveまたはload）'
-        )
-        args = parser.parse_args()
 
-        data_handler = MnistDataHandler(args.data_dir)
-        
-        if args.operation == 'save':
-            data_handler.save_mnist_as_tfrecord()
-        else:  # load
-            data_handler.load_tfrecord_and_display(TRAIN_FILENAME)
-            data_handler.load_tfrecord_and_display(TEST_FILENAME)
-        
-        logger.info("プログラムが正常に終了しました")
-    except Exception as e:
-        logger.error(f"エラーが発生しました: {str(e)}", exc_info=True)
-        sys.exit(1)
+    logger.info("プログラムを開始します")
+    
+    args = ArgumentParser().parse()
+    data_handler = MnistDataHandler(args.data_dir)
+    
+    if args.operation == 'save':
+        data_handler.save_mnist_as_tfrecord()
+    else: 
+        data_handler.load_tfrecord_and_display(TRAIN_FILENAME)
+        data_handler.load_tfrecord_and_display(TEST_FILENAME)
+    
+    logger.info("プログラムが正常に終了しました")
+
 
 if __name__ == '__main__':
     main()
