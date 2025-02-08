@@ -1,7 +1,7 @@
 services:
-  mnist_tfrecord:
-    container_name: mnist_tfrecord
-    image: mnist_tfrecord
+  sample_tfrecord:
+    container_name: sample_tfrecord
+    image: sample_tfrecord
     build:
       context: .
       dockerfile: Dockerfile

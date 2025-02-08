@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Optional
 
 def setup_logger(log_dir: Path, file_name: Optional[str] = None) -> logging.Logger:
-    logger = logging.getLogger('mnist_tfrecord')
+    logger = logging.getLogger('tfrecord_logger')
     
     if logger.handlers:
         return logger
