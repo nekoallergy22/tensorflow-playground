@@ -1,0 +1,13 @@
+services:
+  mnist_tfrecord:
+    container_name: mnist_tfrecord
+    image: mnist_tfrecord
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    environment:
+      - TF_CPP_MIN_LOG_LEVEL=2
+    stdin_open: true  
+    tty: true       

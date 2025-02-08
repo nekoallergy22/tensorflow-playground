@@ -1,0 +1,4 @@
+DATA_DIR: data
+LOG_DIR: logs
+TRAIN_FILENAME: mnist_train.tfrecord
+TEST_FILENAME: mnist_test.tfrecord
