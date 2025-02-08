@@ -19,7 +19,7 @@ This tool provides the following features:
 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/nekoallergy22/tensorflow-playground.git
 cd tensorflow-playground/basic/tfrecord
 ```
 
@@ -59,7 +59,7 @@ docker exec -it mnist_tfrecord python3 /app/scripts/main.py --data_dir /app/data
 
 ## Project Structure
 
-```
+```bash
 .
 ├── Dockerfile
 ├── README.md

@@ -18,14 +18,14 @@ MNIST データセットを TFRecord 形式に変換し、保存・読み込み�
 
 1. リポジトリのクローン
 
-```
+```bash
 git clone https://github.com/nekoallergy22/tensorflow-playground.git
 cd tensorflow-playground/basic/tfrecord
 ```
 
 2. 環境構築
 
-```
+```bash
 ./launch.sh
 ```
 
@@ -35,7 +35,7 @@ cd tensorflow-playground/basic/tfrecord
 
 MNIST データセットを TFRecord 形式に変換して保存します：
 
-```
+```bash
 docker exec -it mnist_tfrecord python3 /app/scripts/main.py --data_dir /app/data --operation save
 ```
 
@@ -48,7 +48,7 @@ docker exec -it mnist_tfrecord python3 /app/scripts/main.py --data_dir /app/data
 
 保存した TFRecord ファイルを読み込み、データの統計情報を表示します：
 
-```
+```bash
 docker exec -it mnist_tfrecord python3 /app/scripts/main.py --data_dir /app/data --operation load
 ```
 
@@ -59,7 +59,7 @@ docker exec -it mnist_tfrecord python3 /app/scripts/main.py --data_dir /app/data
 
 ## プロジェクト構造
 
-```
+```bash
 .
 ├── Dockerfile
 ├── README.md
