@@ -1,0 +1,13 @@
+services:
+  save_tf_model:
+    container_name: save_tf_model
+    image: save_tf_model
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    environment:
+      - TF_CPP_MIN_LOG_LEVEL=2
+    stdin_open: true  
+    tty: true       
